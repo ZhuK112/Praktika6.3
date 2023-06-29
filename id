@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Тестування учнів</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+    }
+    
+    h1 {
+      text-align: center;
+    }
+    
+    .container {
+      width: 400px;
+      margin: 0 auto;
+    }
+    
+    .question {
+      margin-bottom: 10px;
+    }
+    
+    .options {
+      list-style-type: none;
+      padding: 0;
+    }
+    
+    .option {
+      margin-bottom: 5px;
+    }
+    
+    .submit-btn {
+      display: block;
+      margin-top: 10px;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Тестування учнів</h1>
+    
+    <div class="question">
+      <p>Скільки буде 3*4?</p>
+    </div>
+    
+    <form id="quiz-form">
+      <ul class="options">
+        <li class="option">
+          <label>
+            <input type="radio" name="answer" value="10">
+            10
+          </label>
+        </li>
+        <li class="option">
+          <label>
+            <input type="radio" name="answer" value="12">
+            12
+          </label>
+        </li>
+        <li class="option">
+          <label>
+            <input type="radio" name="answer" value="14">
+            14
+          </label>
+        </li>
+      </ul>
+      
+      <input class="submit-btn" type="submit" value="Перевірити">
+    </form>
+  </div>
+  
+  <script>
+    // Отримуємо форму
+    var form = document.getElementById('quiz-form');
+    
+    // Додаємо обробник події при подачі форми
+    form.addEventListener('submit', function(event) {
+      event.preventDefault(); // Зупиняємо перезавантаження сторінки
+      
+      // Отримуємо вибрану відповідь
+      var selectedAnswer = document.querySelector('input[name="answer"]:checked');
+      
+      // Перевіряємо, чи є вибрана відповідь
+      if (selectedAnswer) {
+        var userAnswer = selectedAnswer.value;
+        
+        // Перевіряємо, чи є відповідь правильною
+        if (userAnswer === '12') {
+          alert('Відповідь правильна!');
+        } else {
+          alert('Відповідь неправильна!');
+        }
+        
+        // Очищуємо вибір відповіді
+        selectedAnswer.checked = false;
+      } else {
+        alert('Будь ласка, оберіть один варіант відповіді!');
+      }
+    });
+  </script>
+</body>
+</html>
